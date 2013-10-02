@@ -1,0 +1,42 @@
+// Create a rainbow-style border before or after an element.
+//
+// rainbows([$position, $size, $colors...])
+@mixin rainbows($position, $size, $colors...)
+  $stripe-width: 100% / length($colors)
+  $gradient:     ()
+
+  @for $i from 1 through length($colors)
+    $item: nth($colors, $i)
+    $dump: ()
+
+    $dump: $item $stripe-width * ($i - 1), $item $stripe-width * $i
+
+    $gradient: join($gradient, $dump, comma)
+
+  @if $position == top
+    &:before
+      +rainbows-generic($position, $size)
+      +background(linear-gradient(left, $gradient))
+  @else if $position == bottom
+    &:after
+      +rainbows-generic($position, $size)
+      +background(linear-gradient(left, $gradient))
+
+// Styles for all borders, independent of what colors are being used
+//
+// rainbows-generic([$position, $size])
+@mixin rainbows-generic($position, $size)
+  content: ''
+  display: block
+  height: $size
+  position: absolute
+  left: 0
+  right: 0
+  line-height: 1
+  z-index: 1
+
+  @if $position == top
+    top: 0
+  @else if $position == bottom
+    bottom: 0
+
