@@ -10,7 +10,6 @@ Gem::Specification.new do |s|
   s.files = %w(README.md)
   s.files += Dir.glob('lib/**/*.*')
   s.files += Dir.glob('stylesheets/**/*.*')
-  s.files += Dir.glob('templates/**/*.*')
 
   s.add_dependency('compass', ['>= 0.12'])
 end
