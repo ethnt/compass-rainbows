@@ -4,7 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'compass-rainbows'
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.authors     = ['Ethan Turkeltaub']
   s.summary     = %q{Multi-colored borders with Compass.}
   s.description = s.summary
